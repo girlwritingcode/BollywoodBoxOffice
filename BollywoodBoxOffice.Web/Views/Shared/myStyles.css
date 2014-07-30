@@ -1,0 +1,8 @@
+﻿@font-face {
+    font-family: 'Samarkan';
+    src: url('fonts/SAMARN__.TTF');
+    font-weight:400;
+}
+h1 {
+    font-family: 'Samarkan';
+}

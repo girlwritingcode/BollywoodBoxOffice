@@ -1,0 +1,23 @@
+﻿@model BollywoodBoxOffice.Data.Models.Movie
+
+@{
+    ViewBag.Title = "Edit Movie";
+}
+
+<h2>Edit Movie Details</h2>
+<form action="/Home/EditMovie/@Model.Id" method="post">
+    <input type="text" name="name" value="@Model.Name" />
+    <br />
+    <input type="number" name="year" value="@Model.Year" />
+    <br />
+    <input type="text" name="url" value="@Model.URL" />
+    <br />
+    <input type="text" name="gross" value="@Model.Gross" />
+    <br />
+    <input type="text" name="studio" value="@Model.Studio" />
+    <br />
+    <input type="text" name="director" value="@Model.Director" />
+    <br />
+    <input type="submit" class="btn btn-primary" />
+    <a href="/Home/DeleteMovie/@Model.Id" class="btn btn-danger">Delete</a>
+</form>

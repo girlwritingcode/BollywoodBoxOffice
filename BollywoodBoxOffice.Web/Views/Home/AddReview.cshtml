@@ -1,0 +1,14 @@
+﻿@model BollywoodBoxOffice.Data.Models.Movie
+
+@{
+    ViewBag.Title = "Add Review";
+}
+<h2>Add a Review</h2>
+<form action="/Home/AddReview/@Model.Id" method="post" class="form-group">
+    <input type="text" class="input-group" placeholder="Your Name" name="name"/>
+    <input type="text" class="input-group" placeholder="Stars (out of 5)" name="stars"/>
+    <input type="text"  class="input-group" placeholder="Write review here." name="body"/>
+    <input type="submit" class="btn btn-primary"/>
+</form>
+
+ 

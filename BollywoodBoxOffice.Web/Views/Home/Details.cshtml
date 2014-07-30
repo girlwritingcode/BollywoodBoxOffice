@@ -1,0 +1,38 @@
+﻿@model BollywoodBoxOffice.Data.Models.DetailReviews
+
+@{
+    ViewBag.Title = @Model.Movies.Name;
+}
+
+<h2>@Model.Movies.Name (@Model.Movies.Year)</h2>
+<h4>@Model.Movies.Gross</h4>
+
+<div class="well">
+    <div class="row">
+        <div class="col-md-6">
+            <table>
+                <tr>
+                    <td><b>@Model.Movies.Studio</b></td>
+                </tr>
+                <tr>
+                    <td><b>Director: @Model.Movies.Director</b></td>
+                </tr>
+                <tr>
+                    <td><h5><a href="/Home/EditMovie/@Model.Movies.Id">Edit Movie Details</a></h5></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <img src="@Model.Movies.URL" height="400" width="300" />
+        </div>
+    </div>
+</div>
+
+<h3>Reviews</h3>
+<h5><a href="/Home/AddReview/@Model.Movies.Id">Add a Review</a></h5>
+@foreach (var Review in Model.Reviews)
+{
+    <p><b>@Review.Name</b> (@Review.Stars stars)</p>
+    <p>@Review.Body</p>
+}
+

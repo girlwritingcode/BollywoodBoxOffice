@@ -1,0 +1,18 @@
+﻿@model List<BollywoodBoxOffice.Data.Models.Movie>
+
+@{
+    ViewBag.Title = "Bollywood Box Office";
+}
+
+<h1 class="well-lg">Bollywood Box Office</h1>
+<div class="row well-lg">
+    @foreach (var Movie in Model)
+    {
+        <div class="col-md-4 well-sm">
+            <h2><a href="/Home/Details/@Movie.Id">@Movie.Name</a></h2>
+            <h4>@Movie.Gross</h4>
+            <a href="/Home/Details/@Movie.Id"><img src="@Movie.URL" height="250" width="175" /></a>
+        </div>
+    }
+</div>
+<h4><a href="/Home/AddMovie">Add a New Movie!</a></h4>
