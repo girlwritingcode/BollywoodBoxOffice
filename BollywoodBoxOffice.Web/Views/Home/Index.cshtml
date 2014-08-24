@@ -1,18 +1,58 @@
-﻿@model List<BollywoodBoxOffice.Data.Models.Movie>
+﻿@model List<BollywoodBoxOffice.Web.Models.MovieViewModel>
 
 @{
     ViewBag.Title = "Bollywood Box Office";
 }
 
-<h1 class="well-lg">Bollywood Box Office</h1>
+<button onclick="$('#add-movie').modal()" class="btn btn-success btn-sm plain-font col-lg-offset-10">Add a New Movie!</button>
+<h1 class="">Bollywood Box Office</h1>
+
 <div class="row well-lg">
     @foreach (var Movie in Model)
-    {
-        <div class="col-md-4 well-sm">
+    {   
+        <div class="col-md-4 well-lg">
             <h2><a href="/Home/Details/@Movie.Id">@Movie.Name</a></h2>
-            <h4>@Movie.Gross</h4>
-            <a href="/Home/Details/@Movie.Id"><img src="@Movie.URL" height="250" width="175" /></a>
+            <h4>USD $@Movie.Gross million (₹@Movie.Crores crore)</h4>
+            <a href="/Home/Details/@Movie.Id"><img src="@Movie.URL" height="300" width="200" /></a>
+            <br />
         </div>
     }
 </div>
-<h4><a href="/Home/AddMovie">Add a New Movie!</a></h4>
+<hr />
+<br />
+
+@*ADD MOVIE Modal Starts Here*@
+<div class="modal fade" id="add-movie">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h2 class="modal-title">Add a New Movie</h2>
+            </div>
+            <div class="modal-body">
+                <form class="form-group well form-group" action="/Home/AddMovie/" method="post">
+                    <input class="input-sm form-control" type="text" name="name" placeholder="Movie Name" />
+                    <br />
+                    <input class="input-sm form-control" type="number" name="year" placeholder="Movie Year" size="400" />
+                    <br />
+                    <input class="input-sm form-control" type="text" name="url" placeholder="Photo URL" size="400" />
+                    <br />
+                    <input class="input-sm form-control" type="number" name="gross" placeholder="Gross Profit (in USD millions)" size="400" />
+                    <br />
+                    <input class="input-sm form-control" type="text" name="studio" placeholder="Studio" size="400" />
+                    <br />
+                    <input class="input-sm form-control" type="text" name="director" placeholder="Director" size="400" />
+                    <br />
+                    <input type="submit" class="btn btn-primary plain-font" />
+                </form>
+            </div>
+            <div class="modal-footer">
+                @*<form action="/Home/AddMovie/" method="post">*@
+                    <button type="button" class="btn btn-default plain-font" data-dismiss="modal">Close</button>
+                    @*<button type="submit" class="btn btn-primary plain-font">Save changes</button>*@
+                    @*<input type="submit" class="btn btn-primary plain-font" />*@
+                @*</form>*@
+        </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

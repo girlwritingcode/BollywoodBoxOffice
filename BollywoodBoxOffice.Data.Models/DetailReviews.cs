@@ -8,7 +8,7 @@ namespace BollywoodBoxOffice.Data.Models
 {
     public class DetailReviews
     {
-        public Movie Movies { get; set; }
+        public Movie Movie { get; set; }
         public List<Review> Reviews { get; set; }
     }
 }

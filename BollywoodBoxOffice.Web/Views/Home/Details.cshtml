@@ -1,38 +1,109 @@
 ﻿@model BollywoodBoxOffice.Data.Models.DetailReviews
 
 @{
-    ViewBag.Title = @Model.Movies.Name;
+    ViewBag.Title = @Model.Movie.Name;
 }
+<script type="text/javascript">
+    var crores;
+    var toCrores = function (gross) {
+        crores = (gross * 60.92) / 10;
+        return crores;
+    }
+    toCrores(@Model.Movie.Gross);
+</script>
 
-<h2>@Model.Movies.Name (@Model.Movies.Year)</h2>
-<h4>@Model.Movies.Gross</h4>
+<h2 class="col-lg-offset-2">@Model.Movie.Name (@Model.Movie.Year)</h2>
+<h4 class="col-lg-offset-2">USD $@Model.Movie.Gross million (<i id='rupees'><script>crores</script> </i>)</h4>
+<script>
+    document.getElementById('rupees').innerHTML = "₹" + crores.toFixed(2) + " crore";
+</script>
 
 <div class="well">
     <div class="row">
         <div class="col-md-6">
             <table>
                 <tr>
-                    <td><b>@Model.Movies.Studio</b></td>
+                    <td><b>@Model.Movie.Studio</b></td>
                 </tr>
                 <tr>
-                    <td><b>Director: @Model.Movies.Director</b></td>
+                    <td><b>Director: </b>@Model.Movie.Director</td>
                 </tr>
                 <tr>
-                    <td><h5><a href="/Home/EditMovie/@Model.Movies.Id">Edit Movie Details</a></h5></td>
+                    <td><button onclick="$('#edit-movie').modal()" class="btn btn-link plain-font"><i>Edit Movie Details</i></button></td>
                 </tr>
             </table>
         </div>
         <div class="col-md-6">
-            <img src="@Model.Movies.URL" height="400" width="300" />
+            <img src="@Model.Movie.URL" height="400" width="275" />
         </div>
     </div>
 </div>
 
-<h3>Reviews</h3>
-<h5><a href="/Home/AddReview/@Model.Movies.Id">Add a Review</a></h5>
+<h3 class="col-lg-offset-2">Reviews</h3>
+<button onclick="$('#add-review').modal()" class="btn btn-link plain-font col-lg-offset-2"><i>Add a Review</i></button>
+
 @foreach (var Review in Model.Reviews)
 {
-    <p><b>@Review.Name</b> (@Review.Stars stars)</p>
-    <p>@Review.Body</p>
+    <p class="col-lg-offset-2"><b>@Review.Name</b> (@Review.Stars stars)</p>
+    <p class="col-lg-offset-2">@Review.Body</p>
+    <hr class="col-lg-offset-2 mod"/>
 }
 
+@*EDIT MOVIE Modal Starts Here*@
+<div class="modal fade" id="edit-movie">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h2 class="modal-title">Edit Movie Details</h2>
+            </div>
+            <div class="modal-body">
+                <form class="form-group well form-group" action="/Home/EditMovie/@Model.Movie.Id" method="post">
+                    <input class="input-sm form-control" type="text" name="name" value="@Model.Movie.Name" />
+                    <br />
+                    <input class="input-sm form-control" type="number" name="year" value="@Model.Movie.Year"  />
+                    <br />
+                    <input class="input-sm form-control" type="text" name="url" placeholder="Photo URL" value="@Model.Movie.URL" />
+                    <br />
+                    <input class="input-sm form-control" type="number" name="gross" value="@Model.Movie.Gross" />
+                    <br />
+                    <input class="input-sm form-control" type="text" name="studio" value="@Model.Movie.Studio"/>
+                    <br />
+                    <input class="input-sm form-control" type="text" name="director" value="@Model.Movie.Director"/>
+                    <br />
+                    <input type="submit" class="btn btn-success plain-font" value="Save Changes"/>
+                    <a href="/Home/DeleteMovie/@Model.Movie.Id" class="btn btn-danger col-lg-offset-3">Delete</a>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default plain-font" data-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+@*ADD REVIEW Modal Starts Here*@
+<div class="modal fade" id="add-review">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h2 class="modal-title">Add a Review</h2>
+            </div>
+            <div class="modal-body">
+                <form class="form-group well form-group" action="/Home/AddReview/@Model.Movie.Id" method="post">
+                    <input class="input-sm form-control" type="text" placeholder="Your Name" name="name" />
+                    <br />
+                    <input class="input-sm form-control" type="number" placeholder="Stars (out of 5)" name="stars" />
+                    <br />
+                    <input class="input-sm form-control" type="text" placeholder="Write review here." name="body" />
+                    <br />
+                    <input type="submit" class="btn btn-primary plain-font" value="Save Review" />
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default plain-font" data-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

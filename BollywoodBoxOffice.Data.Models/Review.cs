@@ -15,11 +15,11 @@ namespace BollywoodBoxOffice.Data.Models
         public int MovieId { get; set; } //this makes room for the foreign key from the movie list
         public virtual Movie Movies { get; set; } //this gives the database access to the list of movies 
         public Review() { }
-        public Review(string name, string body, int stars, int movieId)
+        public Review(string name, int stars, string body, int movieId)
         {
             Name = name;
-            Body = body;
             Stars = stars;
+            Body = body;
             MovieId = movieId;
         }
     }

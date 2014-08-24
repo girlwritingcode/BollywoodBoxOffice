@@ -1,0 +1,89 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* --- all the styles above are built in. styles below were written by me --- */
+
+@font-face {
+    font-family: 'SAMARO';
+    src: url('fonts/SAMARN__.TTF') format('truetype');
+}
+@font-face {
+    font-family: 'Titilium-Regular';
+    src: url('fonts/Titillium-Regular.otf') format('opentype');
+}
+@font-face{
+    font-family: 'Titilium-RegularItalic';
+    src: url('fonts/Titillium-RegularItalic.otf') format('opentype');
+}
+h1{
+    font-family: 'SAMARO', sans-serif;
+    font-size: 64px;
+    color: #007bff;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    margin-top: 20px;
+    margin-bottom: auto;
+}
+h2, h3, h5, p, .plain-font, td{
+    font-family: 'Titilium-Regular', sans-serif;
+}
+h4{
+    font-family: 'Titilium-RegularItalic', sans-serif;
+}
+body{
+    background-color: #ececec;
+}
+.font{
+    font-family: 'SAMARO', cursive;
+    text-shadow: 2px 8px 6px rgba(0,0,0,0.2),
+}
+.modal-dialog{
+    width:500px;
+}
+.well{
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    width: 70%;
+}
+.center{
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+}
+hr.mod{
+    margin-right: 16%;
+}
+img{
+   padding:1px;
+   border:1px solid #021a40;
+}
+.navbar-inverse{
+    background-color: #ff8144 !important;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #5e5e5e;
+  background-color: transparent;
+}
+.navbar-text {
+  color: #007bff;
+}
+
+
+724e22 navbar brown?
+4d8d32 navbar green
+91632d h1 brown
+003994 h1 dk blue

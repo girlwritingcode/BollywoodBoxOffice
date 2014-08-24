@@ -3,18 +3,19 @@
 }
 
 <h2>Add a New Movie</h2>
-<form action="/Home/AddMovie/" method="post">
-    <input type="text" name="name" placeholder="Movie Name" />
+<br />
+<form class="form-group well form-group" action="/Home/AddMovie/" method="post">
+    <input class="input-sm form-control"  type="text" name="name" placeholder="Movie Name" />
     <br />
-    <input type="number" name="year" placeholder="Movie Year" />
+    <input class="input-sm form-control form-horizontal" type="number" name="year" placeholder="Movie Year" size="400" />
     <br />
-    <input type="text" name="url" placeholder="Photo URL" />
+    <input class="input-sm form-control" type="text" name="url" placeholder="Photo URL" size="400" />
     <br />
-    <input type="text" name="gross" placeholder="Gross Profit" />
+    <input class="input-sm form-inline form-control" type="number" name="gross" placeholder="Gross Profit" size="400" />
     <br />
-    <input type="text" name="studio" placeholder="Studio" />
+    <input class="input-sm form-horizontal form-control" type="text" name="studio" placeholder="Studio" size="400" />
     <br />
-    <input type="text" name="director" placeholder="Director" />
+    <input class="input-sm form-control" type="text" name="director" placeholder="Director" size="400" />
     <br />
     <input type="submit" class="btn btn-primary"/>
 </form>
